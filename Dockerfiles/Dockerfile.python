@@ -1,0 +1,20 @@
+# Use the official Python image as the base
+FROM python:3.8-slim
+
+# Create and set the working directory
+WORKDIR /app
+
+# Copy the requirements.txt file
+COPY requirements.txt .
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application files
+COPY . .
+
+# Specify the entry point for the application
+CMD ["python", "app.py"]
+
+# Optional: Expose a port
+EXPOSE 5000
